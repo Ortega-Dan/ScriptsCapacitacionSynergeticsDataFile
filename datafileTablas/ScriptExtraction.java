@@ -2,27 +2,37 @@ package datafileTablas;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.List;
 
 import com.ephesoft.dcma.script.IJDomScript;
 import org.jdom.Document;
+import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-
 public class ScriptExtraction implements IJDomScript {
 
+	@SuppressWarnings({ "unchecked" })
+	public Object execute(Document doc, String methodName, String docIdentifier) {
 
-	public Object execute(Document documentFile, String methodName, String docIdentifier) {
-		
 		Exception exception = null;
 		try {
 
+			Element batch = doc.getRootElement();
+			System.out.println(
+					"CORRIENDO SCRIPT DE EXTRACCIÓN PARA LOTE " + batch.getChildText("BatchInstanceIdentifier"));
 
+			List<Element> rows = batch.getChild("Documents").getChild("Document").getChild("DataTables")
+					.getChild("DataTable").getChild("Rows").getChildren();
 
-			System.out.println("Hola Mundo Datafile");
+			List<Element> columnasDePrimeraFila = rows.get(0).getChild("Columns").getChildren();
 
+			Element elementoAModificar = columnasDePrimeraFila.get(0).getChild("Value");
 
+			elementoAModificar.setText("99999999");
+
+			System.out.println("TERMINÓ CON EXITO");
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -30,8 +40,6 @@ public class ScriptExtraction implements IJDomScript {
 		}
 		return exception;
 	}
-
-
 
 	public static void main(String[] args) {
 
@@ -58,6 +66,5 @@ public class ScriptExtraction implements IJDomScript {
 			x.printStackTrace(System.out);
 		}
 	}
-
 
 }
