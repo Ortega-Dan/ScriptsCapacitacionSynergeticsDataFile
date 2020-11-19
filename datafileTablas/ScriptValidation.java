@@ -61,7 +61,7 @@ public class ScriptValidation implements IJDomScript {
 		} catch (Exception e) {
 			exception = e;
 		}
-		return null;
+		return exception;
 	}
 
 	public static void main(String[] args) {
