@@ -488,7 +488,7 @@
                   </CoordinatesList>
                   <Page>PG0</Page>
                   <ForceReview>false</ForceReview>
-                  <Valid>false</Valid>
+                  <Valid>true</Valid>
                   <ValidationRequired>false</ValidationRequired>
                   <AlternateValues />
                 </Column>
@@ -776,4 +776,3 @@
     </Document>
   </Documents>
 </Batch>
-
