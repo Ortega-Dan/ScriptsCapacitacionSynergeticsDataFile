@@ -59,7 +59,6 @@ public class ScriptValidation implements IJDomScript {
 
 			
 		} catch (Exception e) {
-			LOGGER.error("*************  Error occurred in scripts." + e.getMessage());
 			exception = e;
 		}
 		return null;
@@ -77,7 +76,7 @@ public class ScriptValidation implements IJDomScript {
 			ScriptValidation se = new ScriptValidation();
 
 			// Calling
-			// se.execute(doc, "", "");
+			se.execute(doc, "", "");
 
 			// Writing back
 			XMLOutputter xmlOutput = new XMLOutputter();
