@@ -1,8 +1,12 @@
 package datafileTablas;
 
-public class Properties {
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Properties;
 
+public class SynerProperties {
 
+	private static String SYNERENV;
 
 	private static String getFromProps(String batchClass, String property) throws Exception {
 
@@ -16,5 +20,5 @@ public class Properties {
 		input.close();
 		return propresponse;
 	}
-    
+
 }
